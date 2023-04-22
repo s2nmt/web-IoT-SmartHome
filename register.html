@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- !required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <!-- register main-mobile css -->
+  <link href="./css/register/mainMobile.css" rel="stylesheet">
+  <!-- register tablet css -->
+   <link href="./css/register/table.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- register desktop css -->
+   <link href="./css/register/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link href="./css/all.min.css" rel="stylesheet">
+  <!-- common css -->
+  <link href="./css/common.css" rel="stylesheet">
+</head>
+<body>
+
+
+  <div id="bg-register" class="bg-register">
+    <div class="register-form-container">
+      <div class="img-register">
+      </div>
+      <div class="register-form">
+        <div class="register-form2">
+          <div class="text-center">
+            <h4>Create an Account!</h4>
+          </div>
+          <form class="user-register">
+            <!--!Name, Last Name row-->
+            <div class="name-lname-reg ">
+              <div class="name-flex">
+            <div class="reg-name">
+              <input class="form-control form-control-user" type="text" id="exampleInputName"
+                placeholder="First Name" name="name">
+            </div>
+            <div class="reg-lastname">
+              <input class="form-control form-control-user" type="text" id="exampleInputLastName"
+                placeholder="Last Name" name="lastname">
+            </div>
+          </div>
+          </div>
+          <!--!Email row-->
+          <div class="email-reg"><input class="form-control form-control-user" type="email" id="exampleInputEmail"
+            placeholder="Email Address" name="email"></div>
+            <!--!Password row-->
+            <div class="password-reg name-flex">
+              <input class="form-control form-control-user" type="password" id="exampleInputPassword"
+              placeholder="Password" name="password">
+              <input class="form-control form-control-user" type="password" id="exampleInputPassword"
+              placeholder="Repeat Password" name="password">
+            </div>
+
+            <button class="register-btn" type="submit">Register Account</button>
+            <hr>
+            <a href="#" class="register-google" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a>
+            <a href="#" class="register-fb" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>
+            <hr>
+          </form>
+          <div class="text-center"><a class="small" href="#">Forgot Password?</a></div>
+          <div class="text-center small-last"><a class="small" href="login.html">Already have an account? Login!</a></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/firebase.js"></script>
+</body>
+</html>

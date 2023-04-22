@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- !required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+  <!-- table main-mobile css -->
+  <link href="./css/table/mainMobile.css" rel="stylesheet">
+  <!-- table tablet css -->
+  <link href="./css/table/tablet.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- table desktop css -->
+  <link href="./css/table/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link href="./css/all.min.css" rel="stylesheet">
+  <!-- common css -->
+  <link href="./css/common.css" rel="stylesheet">
+  <link rel="stylesheet" href="font/fontawesome-free-6.3.0-web/css/all.min.css">     
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <nav class="navbar-side sidebar">
+      <div class="nav-container">
+        <a class="navbar-brand" href="#">
+          <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+          <div class="sidebar-brand-text"><span>Lazy</span></div>
+        </a>
+        <hr class="sidebar-divider">
+        <ul class="navbar-nav" id="sidebar-ul">
+          <li class="nav-item">
+            <a class="nav-link " href="index_main.html">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">
+              <i class="fas fa-user"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="table.html">
+              <i class="fas fa-table"></i><span>Table</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">
+              <i class="far fa-user-circle"></i><span>Login</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="register.html">
+              <i class="fas fa-user-circle"></i><span>Register</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="content-wrapper">
+      <!--!Navbar Top-->
+      <div class="navbar-top d-flex" id="page-top">
+        <div class="container-fluid d-flex">
+          <button id="sidebarToggleTop" class="btn-link" type="button"><i class="fas fa-bars"></i></button>
+          <form class="navbar-search d-flex">
+            <div class="input-group ">
+              <input class="nav-search" type="text" placeholder="Search for ...">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+        <ul class="navbar-nav-ul d-flex">
+          <li class="nav-item">
+            <a class="dropdown-toggle nav-link search-icon-nav" href="#"><i class="fas fa-search"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span>3+</span><i class="fas fa-bell fa-fw"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span class="badge bg-danger badge-counter">7</span><i
+                class="fas fa-envelope fa-fw"></i></a>
+          </li>
+          <div class="topbar-divider"></div>
+          <li class="nav-item avatar-n">
+            <p><span class="avatar-text">Minh Tuan</span></p>
+            <div class="avatar-nav"></div>
+          </li>
+        </ul>
+      </div>
+      <!--!Top-Nav Ends-->
+
+
+      <!--!Index's Main contents start here-->
+      <div class="index-content container-main">
+        <div class="table-section-header d-flex justify-between">
+          <h3>Data</h3>
+        </div>
+
+        <!--!row-->
+        <div class="row-table-container">
+          <div class="table-content-row">
+            <div class="user-setting margin-row-prof shadow-edit">
+              <!--Table Row Header-->
+              <div class="user-setting-head project-head">
+                <h6> Sensor</h6>
+              </div>
+              <!--Table Row body-->
+              <div class="table-row-body project-body">
+                <!--!Table Top head-->
+                <div class="row-table-head margin-column-form d-flex justify-between">
+                  <div class="table-head-col text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                      <label class="form-label d-flex">
+                        Show&nbsp;
+                        <select class="form-control">
+                          <option value="10" selected="">5</option>
+                          <option value="25">10</option>
+                          <option value="50">15</option>
+                          <option value="100">20</option>
+                        </select>&nbsp;
+                      </label>
+                    </div>
+                  </div>
+                  <div class="table-head-col">
+                    <div class="dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search"
+                          class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container2" style=" display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 0px;
+                    ">
+                    <table class="output">
+                    </table>
+                </div>
+            
+                <script>
+                  const url = 'https://docs.google.com/spreadsheets/d/1rFqUIqGhauEqoEpio_mCsGkN66fdr_HLJrfmOT-7FlI/gviz/tq?&tqx=out:json&sheet=sheet_name&tq=SELECT * LIMIT 20';
+                  const output = document.querySelector('.output');
+                    let dataArray = []; // mảng để lưu dữ liệu
+                    fetch(url)
+                      .then(res => res.text())
+                      .then(rep => {
+                      const data = JSON.parse(rep.substr(47).slice(0, -2));
+                      const headers = data.table.cols.map(heading => heading.label); // lưu tên cột vào mảng headers
+                      dataArray.push(headers); // thêm mảng tên cột vào mảng dữ liệu
+                      data.table.rows.forEach(main => {
+                      const row = [];
+                      const container = document.createElement('tr');
+                      output.append(container);
+
+                      main.c.forEach((ele, index) => {
+                      let cellData = ele.v;
+                      if (index === 1) { // kiểm tra nếu cột thứ hai (vị trí 1) là ngày
+                          // cellData = new Date((cellData - 25569) * 86400 * 1000).toLocaleTimeString(); // đổi định dạng ngày
+                          cellData = cellData.toString()
+                          cellData = cellData.replace("Date(1899,11,30,","Time(")
+                        }
+                        row.push(cellData); // thêm giá trị của mỗi ô vào mảng row
+                      });
+                      dataArray.push(row); // thêm mảng row vào mảng dữ liệu
+                      });
+        
+                      // Tạo bảng HTML và thêm tiêu đề
+                      const table = document.createElement('table');
+                      const thead = document.createElement('thead');
+                      const headerRow = document.createElement('tr');
+                      dataArray[0].forEach(headerText => {
+                      const headerCell = document.createElement('th');
+                      headerCell.textContent = headerText;
+                      headerRow.appendChild(headerCell);
+                      });
+                      thead.appendChild(headerRow);
+                      table.appendChild(thead);
+
+                      // Thêm dữ liệu vào bảng HTML
+                      const tbody = document.createElement('tbody');
+                      dataArray.slice(1).forEach(rowData => {
+                      const row = document.createElement('tr');
+                      rowData.forEach(cellData => {
+                      const cell = document.createElement('td');
+                      cell.textContent = cellData;
+                      row.appendChild(cell);
+                        });
+                      tbody.appendChild(row);
+                      });
+                      table.appendChild(tbody);
+
+                      // Thêm bảng vào phần tử có class "output"
+                      output.appendChild(table);
+                     });
+
+                </script>
+
+                <!--!Table bottom head-->
+                <div class="row-table-head d-flex justify-between">
+                  <div class="table-head-col table-head-col2 text-nowrap">
+                    <p id="dataTable_info" class="dataTables_info margin-column-form" role="status">Showing 1 to 5 of
+                      27</p>
+                  </div>
+                  <div class="table-head-col d-flex flex-end">
+                    <ul class="pagination margin-column-form d-flex">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                      </li>
+                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                            aria-hidden="true">»</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+              </div>
+              <!--Table row body ends-->
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="footer">
+          <footer>
+            <span>Copyright © Minh Tuan 2023</span>
+          </footer>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <a class="page-up-fixed" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+  </div>
+  <script src="js/firebase.js"></script>
+</body>
+
+</html>

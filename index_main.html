@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Lora|Lobster|Engagement|Slabo+27px|Merriweather|Indie+Flower|Black+Ops+One' rel='stylesheet' type='text/css'>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- !required meta tags -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Mở camera trên laptop">
+  <meta name="author" content="Tên tác giả">
+  <meta name="keywords" content="mở camera, laptop, web">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- index main-mobile css -->
+  <link rel="stylesheet" href="./css/index/mainMobile.css" />
+  <!-- index tablet css -->
+  <link href="./css/index/table.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- index desktop css -->
+  <link href="./css/index/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link rel="stylesheet" href="./css/all.min.css" />
+  <!-- common css -->
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="font/fontawesome-free-6.3.0-web/css/all.min.css">     
+</head>
+
+<body style="background: #F8F9FC;">
+  <div id="wrapper" >
+    <nav class="navbar-side sidebar">
+      <div class="nav-container">
+        <a class="navbar-brand" href="#">
+          <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+          <div class="sidebar-brand-text"><span>Lazy</span></div>
+        </a>
+        <hr class="sidebar-divider">
+        <ul class="navbar-nav" id="sidebar-ul">
+          <li class="nav-item">
+            <a class="nav-link active" href="index_main.html">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">
+              <i class="fas fa-user"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="table.html">
+              <i class="fas fa-table"></i><span>Table</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">
+              <i class="far fa-user-circle"></i><span>Login</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="register.html">
+              <i class="fas fa-user-circle"></i><span>Register</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="content-wrapper" >
+      <!--!Navbar Top-->
+      <div class="navbar-top d-flex" id="page-top">
+        <div class="search-bar">
+          <input type="text" name="search-city" id="search-input" placeholder="Search City..." style="border: none; background: #F8F9FC ; width: 270px; height: 32px; padding-left: 10px; outline: none; margin-left: 6px;" >
+          
+          <button type="button" style="background: #4E73DF; border: none; font-size: 17px; width: 42px; height: 30px;border-top-right-radius: 5px; border-bottom-right-radius: 5px; margin-left: -3px;" >
+          <i class="fas fa-search" style="color:white; " ></i></button>
+        </div>
+
+        
+        <ul class="navbar-nav-ul d-flex">
+          <li class="nav-item">
+            
+            <a class="dropdown-toggle nav-link search-icon-nav" href="#"><i class="fas fa-search"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span>3+</span><i class="fas fa-bell fa-fw"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span class="badge bg-danger badge-counter">7</span><i
+                class="fas fa-envelope fa-fw"></i></a>
+          </li>
+          <div class="topbar-divider"></div>
+          <li class="nav-item avatar-n">
+            <p><span class="avatar-text">Minh Tuan</span></p>
+            <div class="avatar-nav"></div>
+          </li>
+        </ul>
+      </div>
+      <!--!Top Nav ends-->
+
+
+      <!--!Index's Main contents start here-->
+
+      <div class="index-content container-main">
+
+          <div class="speech_text">
+            <div class="options">
+                <div class="anguage">
+                <p>Language</p>
+                <select name="input-language" id="language"></select>
+                </div>
+            </div>
+            <div class="line"></div>
+            <button class="btn1 record" >
+              
+                <div class="icon"  >
+                <img src="bars.svg" alt="" />
+                </div>
+                
+                <p>Start</p>
+             </button>
+            <p class="heading"></p>
+            <div class="result" style="margin-top: 2px;">
+                <p class="interim"></p>
+            </div>
+            <div class="buttons">
+                <button class="btn1 clear">
+                  
+                  <i class="fa-solid fa-trash-can" style="color: black"></i>
+                </button>
+            </div>
+          </div>
+        <!--!Indo cards-->
+      <div class="container">
+        <div class="section1">
+          <div class="section_con1">
+            <div class="section_con_con1">
+ 
+                <video id="video" width="400px" height="225px" autoplay style="z-index:10;margin-top: -1px; margin-left: -50px;"></video> 
+                <div class="ajust_device" style="margin-top: -220px; margin-left:190px;">
+                  <input type="checkbox" id="switch9"
+                  class="checkbox" />
+                  <label for="switch9" class="toggle">		 			 
+                  </label>
+                </div>
+                <div style="margin-top: -30px; margin-left: 10px; font-size: 20px;"><b>Camera</b></div>
+                
+              <!-- <b>   
+                <img src="img/Camera_bed.png" alt="" style="width: 380px;height: 225px;" />
+              </b> -->
+
+
+            </div>
+            <div class="section_con_con2">
+
+                <div class="tab_con2_1">
+                  <div class="section_con_con2_1_0_1">
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">   
+                  </div>
+                   <div class="section_con_con2_1_0" >
+                    <div class="section_con_con2_1_0_1">
+                      <p class="city-name" >Hồ Chí Minh</p>
+                    </div>
+                    <div class="section_con_con2_1_0_1">
+                      <p class="weather-state">-- </p>
+                    </div>
+                    <div class="section_con_con2_1_0_1">
+                      <p class="temperature">--</p>
+                    </div>
+                        
+                        
+                        
+                  </div>
+                </div>
+                <div class="tab_con2_1">
+                  <div class="tab_con2_1_1">
+                    <div class="switch_icon">
+                    <div class="ajust_device">
+                      <input type="checkbox" id="switch1"
+                      class="checkbox" />
+                      <label for="switch1" class="toggle">		 			 
+                      </label>
+                    </div>
+                  </div>
+                    <div class="switch_icon1">
+                    <i class="fa-solid fa-wifi" style=" color: #0055d4; "></i>
+                    <p style="margin-top: 10px; font-size: 15px;">Wifi</p>
+                    </div>
+                </div>
+
+                  <div class="tab_con2_1_1">
+                    <div class="switch_icon">
+                      <div class="ajust_device">
+                        <input type="checkbox" id="switch2"
+                        class="checkbox" />
+                        <label for="switch2" class="toggle">		 			 
+                        </label>
+                      </div>
+                    </div>
+                      <div class="switch_icon1">
+                        <i class="fa-solid fa-tv"  style="color: #0055d4"></i>
+                      <p style="margin-top: 10px; font-size: 15px;">Tivi</p>
+                      </div>
+                    
+                    
+                  </div>
+
+                  <div class="tab_con2_1_1">
+                    <div class="switch_icon">
+                      <div class="ajust_device">
+                        <input type="checkbox" id="switch3"
+                        class="checkbox" />
+                        <label for="switch3" class="toggle">		 			 
+                        </label>
+                      </div>
+                    </div>
+                      <div class="switch_icon1">
+                        
+                        <a href="door.html">
+                          <i class="fa-solid fa-door-closed" style="font-size: 30px; color: #0055d4; margin-top:-5px ;"></i>
+                          <p style="margin-top: 0px; font-size: 15px; color: #000;">
+                            Door
+                          </p>
+                          </div>
+                        </a>
+
+                    
+                    
+                    
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="section_con2">
+
+            <div class="tab">
+              <button class="tablinks" onclick="openTab(event, 'Tab1')">Living Room</button>
+              <button class="tablinks" onclick="openTab(event, 'Tab2')">Bed Room</button>
+              <button class="tablinks" onclick="openTab(event, 'Tab3')">Kitchen</button>
+            </div>
+            
+            <div id="Tab1" class="tabcontent">
+              <div class="tab-con">
+                <div class="tab_con1">
+                    <div class="tab_con1_1">
+                      <!-- <iframe scr="https://www.google.com/" style="width: 300px; height: 150px;"></iframe> -->
+                      <img src="img/camera_kitchen.png" alt="" style="width: 433px;height: 175px; border-radius: 10px;" />
+                    </div>
+                    
+                    <div class="tab_con1_2">
+                      <div class="player">
+                        <ul>
+                
+                           <li class="info">
+                              <h1 style="margin-top: 20px; margin-left: 10px;">The Noisy Freaks</h1>
+                              <h4 style="margin-top: 10px; margin-left: 10px;">Premiere</h4>
+                
+                     
+                              <div class="button2-items">
+                                 <audio id="music" preload="auto" loop="false">
+                                    <source src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3?dl=1" type="audio/mp3">
+                                       <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg">
+                                 </audio>
+                                 <div id="slider"><div id="elapsed"></div></div>
+                                 <p id="timer">0:00</p>
+                                 <div class="controls">
+                                    <span class="expend"><svg class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g><polygon points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7"/></g>
+                                    </svg></span>
+                     
+                                    <svg id="play" viewBox="0 0 25 25" xml:space="preserve">
+                                        <defs><rect x="-49.5" y="-132.9" width="446.4" height="366.4"/></defs>
+                                       <g><circle fill="none" cx="12.5" cy="12.5" r="10.8"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.7,6.9V18c0,0,0.2,1.4,1.8,0l8.1-4.8c0,0,1.2-1.1-1-2L9.8,6.5 C9.8,6.5,9.1,6,8.7,6.9z"/>
+                                       </g>
+                                    </svg>
+                                   
+                     
+                                    <svg id="pause" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g>
+                                          <rect x="6" y="4.6" width="3.8" height="15.7"/>
+                                          <rect x="14" y="4.6" width="3.9" height="15.7"/>
+                                       </g>
+                                    </svg>
+                     
+                                    <span class="expend"><svg class="step-foreward" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g><polygon points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7"/></g>
+                                     </svg></span>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                    </div> 
+                </div>
+                <div class="tab_con2" style="margin-left: 10px;">
+                  <div class="tab_con2_1">
+                      <div class="tab_con2_1_1">
+                        <div class="ajust_device_background">
+                          <div class="device_background">
+                            <img id="d05_img" src="./img/fan.jpg" alt="img" style="width:65px; margin: -10px; border-radius: 10px;" >
+                          </div>
+                          <div style="margin-left: -100px;">
+                            
+                            <input type="checkbox" id="switch5"
+                            class="checkbox" />
+                            <label for="switch5" class="toggle">		 			 
+                            </label>
+                          </div>
+                        </div>                       
+                      </div>
+                      <div class="tab_con2_1_1">
+                        <div class="ajust_device_background">
+                          <div class="device_background">
+                            <img id="d06_img" src="./img/speaker.jpg" alt="img" style="width:55px; margin: -10px; border-radius: 10px;" >
+                          </div>
+                          <div style="margin-left: -100px;">
+                            
+                            <input type="checkbox" id="switch6"
+                            class="checkbox" />
+                            <label for="switch6" class="toggle">		 			 
+                            </label>
+                          </div>
+                        </div>         
+                      </div>
+                  </div>
+                  <div class="tab_con2_1">
+                    <div class="tab_con2_1_1">
+                      <div class="ajust_device_background">
+                        <div class="device_background">
+                          <img id="d07_img" src="./img/light.jpg" alt="img" style="width:65px;margin: 15px; margin-left: -10px;" >
+                        </div>
+                        <div style="margin-left: -100px;">
+                          
+                          <input type="checkbox" id="switch7"
+                          class="checkbox" />
+                          <label for="switch7" class="toggle">		 			 
+                          </label>
+                        </div>
+                      </div>         
+                    </div>
+                    <div class="tab_con2_1_1">
+                      <div class="ajust_device_background">
+                        <div class="device_background">
+                          <img id="d08_img" src="./img/huminifer.jpg" alt="img" style="width:65px; margin: 20px; margin-left: -10px;" >
+                        </div>
+                        <div style="margin-left: -100px;">
+                          
+                          <input type="checkbox" id="switch8"
+                          class="checkbox" />
+                          <label for="switch8" class="toggle">		 			 
+                          </label>
+                        </div>
+                      </div>         
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
+            <div id="Tab2" class="tabcontent">
+              <div class="tab-con">
+                <div class="tab_con1">
+                    <div class="tab_con1_1">
+                      <img src="img/camera_kitchen.png" alt="" style="width: 433px;height: 175px;" />
+                    </div>
+                    <div class="tab_con1_2">
+                      <div class="player">
+                        <ul>
+                
+                           <li class="info">
+                              <h1 style="margin-top: 20px; margin-left: 10px;">The Noisy Freaks</h1>
+                              <h4 style="margin-top: 10px; margin-left: 10px;">Premiere</h4>
+                
+                     
+                              <div class="button2-items">
+                                 <audio id="music" preload="auto" loop="false">
+                                    <source src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3?dl=1" type="audio/mp3">
+                                       <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg">
+                                 </audio>
+                                 <div id="slider"><div id="elapsed"></div></div>
+                                 <p id="timer">0:00</p>
+                                 <div class="controls">
+                                    <span class="expend"><svg class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g><polygon points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7"/></g>
+                                    </svg></span>
+                     
+        
+                     
+                                    <span class="expend"><svg class="step-foreward" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g><polygon points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7"/></g>
+                                     </svg></span>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                    </div> 
+                </div>
+                <div class="tab_con2" style="margin-left: 10px;">
+                  <div class="tab_con2_1">
+                      <div class="tab_con2_1_1">
+                        <div class="ajust_device_background">
+                          <div class="device_background">
+                            <img id="d05_img" src="./img/fan.jpg" alt="img" style="width:65px; margin: -10px; border-radius: 10px;" >
+                          </div>
+                          <div style="margin-left: -100px;">
+                            
+                            <input type="checkbox" id="switch25"
+                            class="checkbox" />
+                            <label for="switch25" class="toggle">		 			 
+                            </label>
+                          </div>
+                        </div>                       
+                      </div>
+                      <div class="tab_con2_1_1">
+                        <div class="ajust_device_background">
+                          <div class="device_background">
+                            <img id="d06_img" src="./img/light.jpg" alt="img" style="width:65px;  margin: 5px; margin-left: -10px; border-radius: 10px;" >
+                          </div>
+                          <div style="margin-left: -100px;">
+                            
+                            <input type="checkbox" id="switch26"
+                            class="checkbox" />
+                            <label for="switch26" class="toggle">		 			 
+                            </label>
+                          </div>
+                        </div>         
+                      </div>
+                  </div>
+                  <div class="tab_con2_1">
+                    <div class="tab_con2_1_1">
+                      <div class="ajust_device_background">
+                        <div class="device_background">
+                          <img id="d07_img" src="./img/speaker.jpg" alt="img" style="width:55px;margin: 5px; margin-left: -10px;" >
+                        </div>
+                        <div style="margin-left: -100px;">
+                          
+                          <input type="checkbox" id="switch27"
+                          class="checkbox" />
+                          <label for="switch27" class="toggle">		 			 
+                          </label>
+                        </div>
+                      </div>         
+                    </div>
+                    <div class="tab_con2_1_1">
+                      <div class="ajust_device_background">
+                        <div class="device_background">
+                          <img id="d08_img" src="./img/fried.jpg" alt="img" style="width:65px; margin: 20px; margin-left: -10px;" >
+                        </div>
+                        <div style="margin-left: -100px;">
+                          
+                          <input type="checkbox" id="switch28"
+                          class="checkbox" />
+                          <label for="switch28" class="toggle">		 			 
+                          </label>
+                        </div>
+                      </div>         
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
+            <div id="Tab3" class="tabcontent">
+              <div class="tab-con">
+                <div class="tab_con1">
+                    <div class="tab_con1_1">
+                      <img src="img/camera_kitchen.png" alt="" style="width: 433px;height: 175px;" />
+                    </div>
+                    <div class="tab_con1_2">
+                      <div class="player">
+                        <ul>
+                
+                           <li class="info">
+                              <h1 style="margin-top: 20px; margin-left: 10px;">The Noisy Freaks</h1>
+                              <h4 style="margin-top: 10px; margin-left: 10px;">Premiere</h4>
+                
+                     
+                              <div class="button2-items">
+                                 <audio id="music" preload="auto" loop="false">
+                                    <source src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3?dl=1" type="audio/mp3">
+                                       <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg">
+                                 </audio>
+                                 <div id="slider"><div id="elapsed"></div></div>
+                                 <p id="timer">0:00</p>
+                                 <div class="controls">
+                                    <span class="expend"><svg class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g><polygon points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7"/></g>
+                                    </svg></span>
+                     
+                                    <!-- <svg id="play" viewBox="0 0 25 25" xml:space="preserve">
+                                        <defs><rect x="-49.5" y="-132.9" width="446.4" height="366.4"/></defs>
+                                       <g><circle fill="none" cx="12.5" cy="12.5" r="10.8"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.7,6.9V18c0,0,0.2,1.4,1.8,0l8.1-4.8c0,0,1.2-1.1-1-2L9.8,6.5 C9.8,6.5,9.1,6,8.7,6.9z"/>
+                                       </g>
+                                    </svg>
+                                   
+                     
+                                    <svg id="pause" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g>
+                                          <rect x="6" y="4.6" width="3.8" height="15.7"/>
+                                          <rect x="14" y="4.6" width="3.9" height="15.7"/>
+                                       </g>
+                                    </svg> -->
+                     
+                                    <span class="expend"><svg class="step-foreward" viewBox="0 0 25 25" xml:space="preserve">
+                                       <g><polygon points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7"/></g>
+                                     </svg></span>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                    </div> 
+                </div>
+                <div class="tab_con2" style="margin-left: 10px;">
+                  <div class="tab_con2_1">
+                      <div class="tab_con2_1_1">
+                        <div class="ajust_device_background">
+                          <div class="device_background">
+                            <img id="d05_img" src="./img/fried.jpg" alt="img" style="width:65px; margin: 10px; border-radius: 10px;" >
+                          </div>
+                          <div style="margin-left: -100px;">
+                            
+                            <input type="checkbox" id="switch35"
+                            class="checkbox" />
+                            <label for="switch35" class="toggle">		 			 
+                            </label>
+                          </div>
+                        </div>                       
+                      </div>
+                      <div class="tab_con2_1_1">
+                        <div class="ajust_device_background">
+                          <div class="device_background">
+                            <img id="d06_img" src="./img/speaker.jpg" alt="img" style="width:55px; margin: -10px; border-radius: 10px;" >
+                          </div>
+                          <div style="margin-left: -100px;">
+                            
+                            <input type="checkbox" id="switch36"
+                            class="checkbox" />
+                            <label for="switch36" class="toggle">		 			 
+                            </label>
+                          </div>
+                        </div>         
+                      </div>
+                  </div>
+                  <div class="tab_con2_1">
+                    <div class="tab_con2_1_1">
+                      <div class="ajust_device_background">
+                        <div class="device_background">
+                          <img id="d07_img" src="./img/light.jpg" alt="img" style="width:65px;margin: 15px; margin-left: -10px;" >
+                        </div>
+                        <div style="margin-left: -100px;">
+                          
+                          <input type="checkbox" id="switch37"
+                          class="checkbox" />
+                          <label for="switch37" class="toggle">		 			 
+                          </label>
+                        </div>
+                      </div>         
+                    </div>
+                    <div class="tab_con2_1_1">
+                      <div class="ajust_device_background">
+                        <div class="device_background">
+                          <img id="d08_img" src="./img/huminifer.jpg" alt="img" style="width:65px; margin: 20px; margin-left: -10px;" >
+                        </div>
+                        <div style="margin-left: -100px;">
+                          
+                          <input type="checkbox" id="switch38"
+                          class="checkbox" />
+                          <label for="switch38" class="toggle">		 			 
+                          </label>
+                        </div>
+                      </div>         
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="section2">
+
+            <div class="section2_1">
+              <div class="section2_1_1">
+                <div class="air_switch">
+                  <div style="font-size: 20px; margin: 15px;" > <b>Air Conditioner</b></div>
+                <div class="air_switch">
+                  <div class="ajust_device" style="margin: 15px; ">
+                    <input type="checkbox" id="switch4"
+                    class="checkbox" />
+                    <label for="switch4" class="toggle">		 			 
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+               
+
+              <div class="section2_1_1">
+                <span style="color: #0249FA; margin-top: 70px; margin-left: 200px; font-size: 40px;" id="nhietdo" ></span> 
+                <div style="margin-top: 90px; margin-left: 60px;">
+                  
+                  <div class="col-12 pb-5">
+                    <input class="checkbox1-tools" type="radio" name="tools" id="tool-1" checked>
+                    <label class="for-checkbox1-tools" for="tool-1">
+                      <i class="fa-solid fa-wind" style="color: rgb(255, 255, 255); font-size: 25px; margin-top: -22px;"></i>
+                      
+                    </label><!--
+                    --><input class="checkbox1-tools" type="radio" name="tools" id="tool-2">
+                    <label class="for-checkbox1-tools" for="tool-2">
+                      <i class="fa-regular fa-clock" style="color: rgb(255, 255, 255); font-size: 25px; margin-top: -20px;"></i>
+                      
+                    </label><!--
+                    --><input class="checkbox1-tools" type="radio" name="tools" id="tool-3">
+                    <label class="for-checkbox1-tools" for="tool-3" >
+                      <div style="height: 20px; width: 100%; ">
+                        <i class="fa-solid fa-snowflake" style="color: rgb(255, 255, 255); font-size: 25px; margin-top: -20px;"></i>
+                      </div>
+
+
+                    </label><!--
+                    --><input class="checkbox1-tools" type="radio" name="tools" id="tool-4">
+                    
+                    
+                  </div>
+                
+                </div>
+              </div>
+             
+              <div class='container1'></div>      
+            </div> 
+            <div class="section2_2">
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+              
+              <script>
+                const canvas = document.getElementById('myChart');
+
+                const url = 'https://docs.google.com/spreadsheets/d/1rFqUIqGhauEqoEpio_mCsGkN66fdr_HLJrfmOT-7FlI/gviz/tq?&tqx=out:json&sheet=sheet_name&tq=SELECT * ORDER BY A DESC LIMIT 10';
+
+
+
+                let dataArray = []; // mảng để lưu dữ liệu
+                fetch(url)
+                  .then(res => res.text())
+                  .then(rep => {
+                  const data = JSON.parse(rep.substr(47).slice(0, -2));
+                  const headers = data.table.cols.map(heading => heading.label); // lưu tên cột vào mảng headers
+
+                  var index1 = headers.indexOf('Date');
+
+                  // Nếu phần tử 'Date' có trong mảng, xóa nó bằng phương thức splice()
+                  if (index1 > -1) {
+                    headers.splice(index1, 1);
+                  }
+
+                  dataArray.push(headers); // thêm mảng tên cột vào mảng dữ liệu
+                  data.table.rows.forEach(main => {
+                  const row = [];
+
+                  main.c.forEach((ele, index) => {
+                  let cellData = ele.v;
+                  if(index >=1){
+                    if (index === 1) { // kiểm tra nếu cột thứ hai (vị trí 1) là ngày
+                        cellData = cellData.toString()
+                        cellData = cellData.replace("Date(1899,11,30,","")
+                        cellData = cellData.replace(")","")
+                    }
+                    row.push(cellData); // thêm giá trị của mỗi ô vào mảng row
+                  }
+                  });
+                  dataArray.push(row); // thêm mảng row vào mảng dữ liệu
+                  });
+        
+                  // Khởi tạo biểu đồ line
+                  const myChart = new Chart(canvas, {
+                  type: 'line',
+                  data: {
+                    labels: dataArray.slice(1).map(row => row[0]), // lấy giá trị của cột đầu tiên làm nhãn x
+                    datasets: [{
+                      label: dataArray[0][2], // lấy tên của cột thứ hai làm tên dataset
+                      data: dataArray.slice(1).map(row => row[2]), // lấy giá trị của cột thứ hai làm giá trị y
+                      fill: false,
+                      borderColor: 'rgb(75, 192, 192)',
+                      tension: 0.1
+                    },
+                    {
+                      label: dataArray[0][1], // lấy tên của cột thứ hai làm tên dataset
+                      data: dataArray.slice(1).map(row => row[1]), // lấy giá trị của cột thứ hai làm giá trị y
+                      fill: false,
+                      borderColor: 'rgb(255, 110, 52)',
+                      tension: 0.1
+                    },
+                  ]
+                
+                  },
+                  options: {
+                    scales: {
+                      yAxes: [{
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }]
+                    }
+                  }
+                  });
+                });
+
+                // google.charts.load('current', {
+                //   'packages': ['corechart', 'bar']
+                // });
+                // google.charts.setOnLoadCallback(initChart);
+              
+                // function initChart() {
+                //   URL = "https://docs.google.com/spreadsheets/d/15UFhiBk-X-8jDeteeLyVxoeZYE7d42UbMF9JsKyZqNg/edit#gid=0";
+                //   var query = new google.visualization.Query(URL);
+                //   query.setQuery('select *');
+                //   query.send(function(response) {
+                //     handleQueryResponse(response);
+                //   });
+                // }
+              
+                // function handleQueryResponse(response) {
+                //   var data = response.getDataTable();
+                //   var columns = data.getNumberOfColumns();
+                //   var rows = data.getNumberOfRows();
+                //   console.log(data.toJSON());
+              
+                //   const colors = ['rgb(54, 162, 235)', 'rgb(255, 99, 132)', 'rgb(75, 192, 192)', 'rgb(255, 206, 86)', 'rgb(153, 102, 255)'];
+                //   dataj = JSON.parse(data.toJSON());
+                //   console.log(dataj.cols[0].label);
+                //   const labels = [];
+                //   for (c = 1; c < dataj.cols.length; c++) {
+                //     if (dataj.cols[c].label != "") {
+                //       labels.push(dataj.cols[c].label);
+                //     }
+              
+                //   }
+                //   console.log(labels);
+                  
+                //   const datasets = [];
+                //   for (i = 0; i < dataj.rows.length; i++) {
+                //     const series_data = [];
+                //     for (j = 1; j < dataj.rows[i].c.length; j++) {
+                //       if (dataj.rows[i].c[j] != null) {
+                //         if (dataj.rows[i].c[j].v != null) {
+                //           series_data.push(dataj.rows[i].c[j].v);
+                //         } else {
+                //           series_data.push(0);
+                //         }
+                //       }
+              
+                //     }
+                //     var dataset = {
+                //       label: dataj.rows[i].c[0].v,
+                //       backgroundColor: colors[i],
+                //       borderColor: colors[i],
+                //       data: series_data
+                //     }
+              
+                //     datasets.push(dataset);
+              
+                //   }
+                //   console.log(datasets);
+              
+                //   const chartdata = {
+                //     labels: labels,
+                //     datasets: datasets
+                //   };
+                //   var canvas = document.getElementById("myChart");
+                //   var setup = {
+                //     type: 'line',
+                //     data: chartdata,
+                //     options: {
+                //       plugins: {
+                //         title: {
+                //           display: true,
+                //           text: dataj.cols[0].label
+                //         }
+                //       },
+                //       responsive: true,
+                //     }
+                //   }
+                //   chart = new Chart(canvas, setup);
+              
+                // }
+              </script>
+            </div>
+
+      </div>  
+          
+
+
+
+    </div>
+
+
+  </div>
+  <div class="footer" style="margin-top: -840px;">
+    <footer>
+      <span>Copyright © Minh Tuan 2023</span>
+    </footer>
+  </div>
+  <script src="js/menu.js"></script>	
+  <script src="js/languages.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/music.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script> 
+  <script src="js/control.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/firebase.js"></script>
+</body>
+
+</html>
